@@ -1,0 +1,12 @@
+# Bỏ qua toàn bộ thư mục có tên data (ở bất kỳ vị trí nào)
+**/data/
+
+# Bỏ qua toàn bộ file .txt (ngoại trừ requirements.txt)
+*.txt
+!requirements.txt
+
+# Bỏ qua các thư mục cụ thể (và toàn bộ nội dung bên trong)
+Figure assets/
+LLM_Batch_Processing/
+trivial/
+Reference/
