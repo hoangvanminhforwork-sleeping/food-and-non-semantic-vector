@@ -12,3 +12,4 @@ LLM_Batch_Processing/
 trivial/
 Reference/
 .kilo/
+*.wal
