@@ -5,6 +5,8 @@
     "context": ".."
   },
   "workspaceFolder": "/workspace",
+  // Thêm dòng workspaceMount bên dưới để ép VS Code mount toàn bộ thư mục gốc dự án
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
 
   "customizations": {
     "vscode": {
@@ -17,7 +19,6 @@
         "python.defaultInterpreterPath": "/usr/local/bin/python"
       }
     }
-    
   },
 
   "remoteUser": "root"

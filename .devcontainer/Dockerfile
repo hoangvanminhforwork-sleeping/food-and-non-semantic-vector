@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# Cài đặt git và các công cụ hệ thống không lưu cache rác
+# Cài đặt git và các công cụ hệ thống cần thiết
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
@@ -9,12 +9,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /workspace
 
-# Nâng cấp pip và cài đặt thư viện Python
+# Nâng cấp pip, setuptools, wheel
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-COPY .devcontainer/requirements.txt .
-RUN pip install -v --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+# Copy requirements vào /tmp để tránh làm dơ/ghi đè thư mục /workspace
+COPY .devcontainer/requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 EXPOSE 8888
-
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token=''"]
