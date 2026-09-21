@@ -1,5 +1,6 @@
 # Bỏ qua toàn bộ thư mục có tên data (ở bất kỳ vị trí nào)
 **/data/
+*.duckdb
 
 # Bỏ qua toàn bộ file .txt (ngoại trừ requirements.txt)
 *.txt
