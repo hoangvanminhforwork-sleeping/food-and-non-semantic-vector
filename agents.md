@@ -72,7 +72,7 @@ There are two kinds of documents:
 
 - Note what you did for the task
 
-- Update agents.md for syncing the project: Mostly the time and project structure only
+- Update agents.md for syncing the project: Update the time and project structure only
 
 You can read this folder to understand my preference style in documenting and coding: /workspace/1_silver_create
 
