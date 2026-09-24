@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Zoo code in VS code
 
-Updated at: ...
+Updated at: 2026-09-24 04:11 UTC
 
 Please run terminal command to check the time
 
@@ -38,6 +38,10 @@ Here is the current structure of the project: Just to look at structure only. De
 ├── 1_silver_create
 │   ├── silver_curation.ipynb
 │   └── silver_data_create_note.md
+├── 2_data_exploratory
+│   ├── explore_zenodo_recipe.ipynb
+│   ├── explore_zenodo_recipe.md
+│   └── explore_zenodo_recipe_note.md
 ├── agents.md
 └── data
     ├── FoodUSDA_latest
@@ -56,7 +60,7 @@ This project is just to make the code cleaner and reproducible, therefore, prior
 
 And please, I usually "mix" between "objectives" and "implementation guide". When I said something about implementation approach, that is just "I have run this, in old folder, and it worked", like a recommended approach. No need to strictly follow my "hint"
 
-**Reproducibility**: For SQL, always use "if not exist", "create or replace"...etc, so I can run the notebook multiple times without changing the state of the data so much
+**Idempotency**: For SQL, always use "if not exist", "create or replace"...etc, so I can run the notebook multiple times without changing the state of the data so much
 
 # 4. Fixed jobs
 
