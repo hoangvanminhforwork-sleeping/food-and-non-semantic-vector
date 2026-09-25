@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Zoo code in VS code
 
-Updated at: 2026-09-24 04:11 UTC
+Updated at: 2026-09-24 06:37 UTC
 
 Please run terminal command to check the time
 
@@ -39,9 +39,13 @@ Here is the current structure of the project: Just to look at structure only. De
 │   ├── silver_curation.ipynb
 │   └── silver_data_create_note.md
 ├── 2_data_exploratory
+│   ├── explore_foodb.ipynb
+│   ├── explore_foodb_and_foodusda_note.md
+│   ├── explore_foodusda.ipynb
+│   ├── explore_zenodo_mission.md
 │   ├── explore_zenodo_recipe.ipynb
-│   ├── explore_zenodo_recipe.md
-│   └── explore_zenodo_recipe_note.md
+│   ├── explore_zenodo_recipe_note.md
+│   └── general_FooDB_and_FoodUSDA_exploratory_mission.md
 ├── agents.md
 └── data
     ├── FoodUSDA_latest
@@ -78,6 +82,9 @@ There are two kinds of documents:
 
 - Update agents.md for syncing the project: Update the time and project structure only
 
+Phase 03: Delete temp files
+Clean up any temporary files and diẻctories you created during this task before finishing
+
 You can read this folder to understand my preference style in documenting and coding: /workspace/1_silver_create
 
 # 5. Other notes
@@ -101,6 +108,9 @@ Even though Dockerfile, requirements or Devcontainer does not have tree
 But I have installed tree command into the container
 
 I hope this can help you understand my project better
+
+## d. Tmp folder
+Clean up any temporary files and diẻctories you created during this task before finishing
 
 ## .kilo folder
 Just ignore it
