@@ -1,8 +1,8 @@
 This is the general guideline to help you understand about the context and environment
 
-I am talking with you through Zoo code in VS code
+I am talking with you through Cline in VS code
 
-Updated at: 2026-09-24 06:37 UTC
+Updated at: 2026-09-25 12:23 UTC
 
 Please run terminal command to check the time
 
@@ -46,6 +46,9 @@ Here is the current structure of the project: Just to look at structure only. De
 │   ├── explore_zenodo_recipe.ipynb
 │   ├── explore_zenodo_recipe_note.md
 │   └── general_FooDB_and_FoodUSDA_exploratory_mission.md
+├── 3_add_AI_standardized_data
+│   ├── add_AI_labeled_data_to_bronze.ipynb
+│   └── add_AI_labeled_data_to_bronze_note.md
 ├── agents.md
 └── data
     ├── FoodUSDA_latest
@@ -70,7 +73,7 @@ And please, I usually "mix" between "objectives" and "implementation guide". Whe
 
 Mostly, whenever I ask you to do something to me, document is always needed
 
-You can think of...there are always two phases
+You can think of...there are always fixed phases
 
 Phase 01: You do the tasks
 
@@ -80,12 +83,16 @@ There are two kinds of documents:
 
 - Note what you did for the task
 
-- Update agents.md for syncing the project: Update the time and project structure only
++) Basically: What you did? What troubles did you encounter? How do you resolve? Document in details!
+
++) And mostly, when I did not mention the address I want, the address is..the folder I told you in the mission. Write the file md in that
+
+- Update agents.md for syncing the project: Update the time and project structure
 
 Phase 03: Delete temp files
 Clean up any temporary files and diẻctories you created during this task before finishing
 
-You can read this folder to understand my preference style in documenting and coding: /workspace/1_silver_create
+If you have any question, you can ask me any time
 
 # 5. Other notes
 
@@ -93,6 +100,8 @@ You can read this folder to understand my preference style in documenting and co
 DuckDB database can have only one connection at the same time only (It is not like MySQL)
 
 DuckDB is optimized for OLAP (Analysis), not OLPT (Reading and Writing in applications)
+
+Moreover, there should always two cells in top of every notebook used SQL: One for connection, and one for disconnection, to minimize the probability of data corruption
 
 ## b. VS code cache
 Me (as a user) can look at the VS code GUI only
@@ -111,6 +120,8 @@ I hope this can help you understand my project better
 
 ## d. Tmp folder
 Clean up any temporary files and diẻctories you created during this task before finishing
+
+Maybe there are md files from previous tasks, becareful with them, maybe like...checking the tmp/folder then do not name a tmp file with same name with one of existing files
 
 ## .kilo folder
 Just ignore it
