@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Cline in VS code
 
-Updated at: 2026-09-25 12:23 UTC
+Updated at: 2026-09-27 08:34 UTC
 
 Please run terminal command to check the time
 
@@ -48,8 +48,21 @@ Here is the current structure of the project: Just to look at structure only. De
 │   └── general_FooDB_and_FoodUSDA_exploratory_mission.md
 ├── 3_add_AI_standardized_data
 │   ├── add_AI_labeled_data_to_bronze.ipynb
+│   ├── add_AI_labeled_data_to_bronze.md
 │   └── add_AI_labeled_data_to_bronze_note.md
+├── 4_AI_cleaned_data_exploratory
+│   ├── AI_generated_data_exploratory.md
+│   ├── AI_generated_data_exploratory_note.md
+│   └── AI_generated_data_exploratory.ipynb
+├── 5_Confirm_number
+│   ├── confirm_mission.md
+│   ├── confirm_numbers.ipynb
+│   └── confirm_note.md
+├── ICOCO.duckdb
 ├── agents.md
+├── investigate_data_mismatch
+│   ├── investigation_mission.md
+│   └── investigation_report.md
 └── data
     ├── FoodUSDA_latest
     ├── FoodUSDA_legacy
@@ -57,7 +70,11 @@ Here is the current structure of the project: Just to look at structure only. De
     ├── RecipeZenodo_final.csv
     ├── RecipeZenodo_utf8.csv
     ├── coutries.csv
-    └── foodb_2020_04_07
+    ├── cuisine_normalize
+    ├── foodb_2020_04_07
+    ├── ingredient_standardize
+    ├── odor
+    └── scientific_name
 
 # 3. Preference
 
@@ -90,7 +107,7 @@ There are two kinds of documents:
 - Update agents.md for syncing the project: Update the time and project structure
 
 Phase 03: Delete temp files
-Clean up any temporary files and diẻctories you created during this task before finishing
+Clean up any temporary files and directories you created during this task before finishing
 
 If you have any question, you can ask me any time
 
@@ -119,7 +136,7 @@ But I have installed tree command into the container
 I hope this can help you understand my project better
 
 ## d. Tmp folder
-Clean up any temporary files and diẻctories you created during this task before finishing
+Clean up any temporary files and directories you created during this task before finishing
 
 Maybe there are md files from previous tasks, becareful with them, maybe like...checking the tmp/folder then do not name a tmp file with same name with one of existing files
 
