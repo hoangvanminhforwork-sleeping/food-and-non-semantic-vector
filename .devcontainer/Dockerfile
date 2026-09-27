@@ -13,8 +13,8 @@ WORKDIR /workspace
 # Upgrade core Python packaging tools
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
 
-# Copy and install dependencies from requirements.txt
-COPY requirements.txt /tmp/requirements.txt
+# Copy requirements from .devcontainer folder into container /tmp
+COPY .devcontainer/requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 EXPOSE 8888
