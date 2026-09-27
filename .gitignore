@@ -16,3 +16,4 @@ Reference/
 *.wal
 
 old_code/
+.cline/

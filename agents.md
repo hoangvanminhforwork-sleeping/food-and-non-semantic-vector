@@ -127,14 +127,6 @@ Sometimes, VS code shows me the old version of some files (the problem related t
 
 Please confirm through the terminal that the file has been modified and tell me (So I can reload the window to see the modified file)
 
-## c. Tree command
-
-Even though Dockerfile, requirements or Devcontainer does not have tree
-
-But I have installed tree command into the container
-
-I hope this can help you understand my project better
-
 ## d. Tmp folder
 Clean up any temporary files and directories you created during this task before finishing
 

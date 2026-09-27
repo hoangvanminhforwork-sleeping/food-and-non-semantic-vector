@@ -5,15 +5,22 @@
     "context": ".."
   },
   "workspaceFolder": "/workspace",
-  // Thêm dòng workspaceMount bên dưới để ép VS Code mount toàn bộ thư mục gốc dự án
+  // Mount the workspace folder into the container
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  // Mount the project's local .cline folder into the container's root directory
+  "mounts": [
+    "source=${localWorkspaceFolder}/.cline,target=/root/.cline,type=bind",
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
 
   "customizations": {
     "vscode": {
       "extensions": [
         "ms-python.python",
         "ms-toolsai.jupyter",
-        "ms-python.vscode-pylance"
+        "ms-python.vscode-pylance",
+        "saoudrizwan.claude-dev" // Cline extension inside container
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python"
