@@ -5,6 +5,7 @@
 # Bỏ qua toàn bộ file .txt (ngoại trừ requirements.txt)
 *.txt
 !requirements.txt
+*.pdf
 
 # Bỏ qua các thư mục cụ thể (và toàn bộ nội dung bên trong)
 Figure assets/
