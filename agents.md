@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Cline in VS code
 
-Updated at: 2026-09-27 13:52 UTC
+Updated at: 2026-09-27 16:26 UTC
 
 Please run terminal command to check the time
 
@@ -54,11 +54,16 @@ Here is the current structure of the project: Just to look at structure only. De
 │   ├── AI_generated_data_exploratory.md
 │   ├── AI_generated_data_exploratory_note.md
 │   └── AI_generated_data_exploratory.ipynb
-├── 5_Confirm_number
+├── 5_confirm_methodology_number
 │   ├── confirm_mission.md
 │   ├── confirm_mission02.md
 │   ├── confirm_mission02_note.md
 │   ├── confirm_numbers.ipynb
+│   └── confirm_note.md
+├── 6_confirm_LLM_performance_number
+│   ├── missions.md
+│   ├── 01_bronze_ingestion.ipynb
+│   ├── 02_LLM_performance_verification.ipynb
 │   └── confirm_note.md
 ├── ICOCO.duckdb
 ├── agents.md
@@ -74,6 +79,11 @@ Here is the current structure of the project: Just to look at structure only. De
     ├── coutries.csv
     ├── cuisine_normalize
     ├── foodb_2020_04_07
+    ├── FoodUSDA_query
+    ├── GBIF_query
+    │   ├── dirty_ingredient_country_mapping.json
+    │   ├── gbif_match_cache.json
+    │   └── gbif_species_match.jsonl
     ├── ingredient_standardize
     ├── odor
     └── scientific_name
