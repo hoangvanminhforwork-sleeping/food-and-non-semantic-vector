@@ -14,6 +14,7 @@ trivial/
 Reference/
 .kilo/
 *.wal
+*.npy
 
 old_code/
 .cline/
