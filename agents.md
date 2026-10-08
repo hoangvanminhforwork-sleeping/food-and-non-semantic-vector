@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Cline in VS code
 
-Updated at: 2026-09-27 16:26 UTC
+Updated at: 2026-10-08 03:46 UTC
 
 Please run terminal command to check the time
 
@@ -65,11 +65,49 @@ Here is the current structure of the project: Just to look at structure only. De
 │   ├── 01_bronze_ingestion.ipynb
 │   ├── 02_LLM_performance_verification.ipynb
 │   └── confirm_note.md
+├── 7_create_npy_files
+│   ├── missions.md
+│   ├── geo_vector_npy_export.ipynb
+│   ├── entity_vector_npy_export.ipynb
+│   ├── odor_vector_npy_export.ipynb
+│   ├── recipe_geography_vectors.npy
+│   ├── entity_vectors.npy
+│   ├── recipe_odor_vectors.npy
+│   ├── recipe_odor_entropy.npy
+│   └── 7_create_npy_files_note.md
+├── 8_create_battle
+│   ├── missions.md
+│   ├── BattleGeneration.ipynb
+│   └── BattleGeneration_note.md
 ├── ICOCO.duckdb
+├── ICOCO IEEE eXPress.pdf
+├── agentTemplates.md
 ├── agents.md
+├── final
+│   ├── ICOCO_notebook.ipynb            # local-host notebook
+│   ├── ICOCO_notebook_Colab.ipynb      # Colab notebook (GitHub-Release data) — FoodBERT encode + GPU K-means + Fig 6.1/6.2/6.3 (paper-reference source switch)
+│   ├── ICOCO_notebook_note.md
+│   ├── ICOCO_notebook_Colab_foodbert_kmeans_note.md # FoodBERT + GPU K-means task note
+│   ├── final_add_external_ablation_and_change_style_internal_ablation_note.md # external-ablation figure + internal restyle task note
+│   ├── checking_data_readiness.md
+│   ├── checking_data_readiness_note.md
+│   ├── final_mission.md
+│   ├── huge_notebook_docs_note.md
+│   ├── investigate_report_mismatch_and_modify_chart_mission.md
+│   ├── investigate_report_mismatch_and_modify_chart_note.md  # Fig. 6.1 mismatch task note
+│   ├── paper_audit.md  # forensic audit of the paper's claims (external metric unreproducible)
+│   ├── merge_notebook_template.md
+│   ├── recommended_huge_notebook_structure.md
+│   └── data            # GitHub-Release payload (raw archives + merged LLM jsonl + mappings + .npy)
 ├── investigate_data_mismatch
 │   ├── investigation_mission.md
 │   └── investigation_report.md
+├── old_code            # legacy pipeline (read-only reference)
+├── system_inspection
+│   ├── missions.md
+│   ├── system_note.md       # operational guidelines + health-check routine for agents
+│   └── mission_report.md    # inspection findings, actions, before/after metrics
+├── trivial
 └── data
     ├── FoodUSDA_latest
     ├── FoodUSDA_legacy
@@ -97,6 +135,10 @@ This project is just to make the code cleaner and reproducible, therefore, prior
 And please, I usually "mix" between "objectives" and "implementation guide". When I said something about implementation approach, that is just "I have run this, in old folder, and it worked", like a recommended approach. No need to strictly follow my "hint"
 
 **Idempotency**: For SQL, always use "if not exist", "create or replace"...etc, so I can run the notebook multiple times without changing the state of the data so much
+
+**RAM and OOM**: Becareful, the container has only max 3.68 GB RAM only. And...practical, the RAM for completing tasks were just 2.2GB - 3GB
+
+**Batch reading**: Prioritize batch reading to reduce the request needed, because somehow, the platform takes so much time...not send the request to you
 
 # 4. Fixed jobs
 
