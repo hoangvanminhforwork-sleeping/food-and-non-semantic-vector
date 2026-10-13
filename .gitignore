@@ -1,4 +1,4 @@
-```gitignore
+
 # ==========================================
 # 1. Bỏ qua toàn bộ thư mục tên data
 # Ở bất kỳ cấp nào trong project
@@ -61,4 +61,4 @@ old_code/
 # ==========================================
 # 5. Các quy tắc bổ sung từ gitignore cũ
 # ==========================================
-```
+**/presentation
