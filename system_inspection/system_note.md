@@ -190,7 +190,7 @@ for f in /proc/[0-9]*/cmdline; do tr '\0' ' ' < "$f"; echo; done   # process lis
 for fd in /proc/[0-9]*/fd/*; do readlink "$fd"; done               # open files w/o lsof
 ```
 
-## 7. Cline & Extension Host Self-Diagnostic Protocols (FOR AGENTS)
+## 7. Cline & Extension Host Self-Diagnostic Protocols (This is written by gemini, do not trust it entirely, other parts are writen by agents)
 
 ### 7a. The Extension Host Risk Profile
 - **Primary Bottleneck:** `/workspace` resides on a Windows `D:` drive bind mount via WSL2 virtiofs. Heavy I/O or massive context payloads will saturate virtiofs / VS Code WebSocket, leading to WebView white-screen crashes and Extension Host process termination.
@@ -223,3 +223,229 @@ If any basic filesystem command (`ls`, `stat`, `cat`) on `/workspace` takes **> 
 1. **STOP** sending long text responses or multiple consecutive file operations.
 2. Force garbage collection or memory flush by reducing context length.
 3. Inform the user: *"Virtiofs I/O latency detected (>3s). Diverting scratch operations to /tmp to prevent WebView freeze."*
+
+## 8. SRE and Coding Must Be Performed in Parallel (This is written by ChatGPT and users, do not trust it much)
+
+> **Important:** This is a recommendation, not a strict requirement. Use your best judgment based on the current situation.
+
+While working on a coding task, the agent must not focus exclusively on writing code. It should maintain continuous awareness of the health, stability, and resource usage of the environment in which it is operating.
+
+In practice, **coding and SRE/DevOps responsibilities should be performed in parallel**.
+
+The goal is not to turn every coding task into a full infrastructure-monitoring exercise. The goal is to prevent the agent from spending significant time and resources on coding while the environment is silently approaching a failure state.
+
+### 8.1. Monitor the Environment While Coding
+
+While implementing, debugging, testing, or using tools, periodically pay attention to:
+
+* Container/process health
+* CPU and memory usage
+* OOM conditions or memory pressure
+* Disk usage and available space
+* Long-running or stuck processes
+* Excessive subprocesses
+* Network connectivity
+* API availability and rate limits
+* Excessive API/tool calls
+* Logs that indicate crashes, retries, timeouts, or resource exhaustion
+* Temporary files, caches, or logs that are growing unnecessarily
+* Any other resource constraint that could cause the current session or container to terminate
+
+Do not assume that the environment will remain healthy just because the code itself is correct.
+
+### 8.2. Time Is Also a Resource
+
+The agent should also monitor **execution time**, especially for tool calls, API requests, commands, builds, tests, and other potentially expensive operations.
+
+For operations where timing is relevant, record:
+
+```text
+start time
+<operation / tool call>
+end time
+duration = end time - start time
+```
+
+For example:
+
+```text
+echo "start time: $(date +%s.%N)"
+
+<tool call / command>
+
+echo "end time: $(date +%s.%N)"
+echo "duration: <end time - start time>"
+```
+
+The exact mechanism for measuring time is not important. The important thing is to make unexpected delays observable.
+
+### 8.3. Detect Unexpected Delays
+
+Do not only look at the duration of an individual operation. Also consider the **timeline between related operations**.
+
+For example:
+
+```text
+Tool call 1:
+    start = 10.0s
+    end   = 10.1s
+    duration = 0.1s
+
+Tool call 2:
+    start = 10.1s
+    end   = 10.3s
+    duration = 0.2s
+```
+
+This is normal and the total elapsed time is approximately consistent with the work being performed.
+
+However, if the timeline looks like:
+
+```text
+Tool call 1:
+    end = 10.1s
+
+Tool call 2:
+    end = 19.1s
+    duration = 0.2s
+```
+
+then the unexplained **~9 second gap** should be treated as a potential anomaly.
+
+The agent should investigate where appropriate rather than blindly continuing.
+
+Possible causes include:
+
+* Tool-call scheduling delays
+* Queueing
+* Container resource contention
+* CPU starvation
+* Memory pressure
+* Network latency
+* API throttling/rate limiting
+* Process stalls
+* Infrastructure problems
+* Unexpected retries or backoff
+* Other hidden overhead
+
+### 8.4. Watch for Cumulative Resource Consumption
+
+A single operation may be harmless while repeated operations can become dangerous.
+
+Therefore, the agent should consider cumulative effects such as:
+
+```text
+Repeated API calls
+        ↓
+Rate limiting / throttling
+        ↓
+Retries / backoff
+        ↓
+More API calls
+        ↓
+Longer execution time
+        ↓
+Potential session/container failure
+```
+
+Similarly:
+
+```text
+Repeated processes / builds / tests
+        ↓
+Increasing CPU / memory / disk usage
+        ↓
+Resource exhaustion
+        ↓
+Container or agent termination
+        ↓
+Task remains incomplete
+```
+
+When an operation is expensive or being repeated frequently, consider whether the same result can be achieved with fewer calls or less resource consumption.
+
+### 8.5. React to Signs of Instability
+
+If the environment starts showing signs of instability, the agent should adapt its behavior.
+
+For example:
+
+* Reduce unnecessary tool/API calls
+* Avoid repeatedly running expensive commands
+* Stop or clean up unnecessary processes
+* Remove unnecessary temporary files or artifacts
+* Reduce concurrency when resources are constrained
+* Investigate repeated failures instead of blindly retrying
+* Allow overloaded services or APIs to recover when appropriate
+* Prefer cheaper or more targeted operations when possible
+* Preserve intermediate work before attempting risky operations
+
+The agent should prioritize **recoverability and task completion**, not simply continue executing the original plan at all costs.
+
+### 8.6. Do Not Confuse Coding Progress With Task Progress
+
+A task is not making meaningful progress if the agent is producing code while the execution environment is becoming increasingly unstable.
+
+Therefore, evaluate progress using both:
+
+1. **Development progress**
+
+   * Code implementation
+   * Tests
+   * Debugging
+   * Verification
+
+2. **Operational health**
+
+   * Container/session health
+   * Resource availability
+   * Tool/API responsiveness
+   * Execution time
+   * Error and retry rates
+
+Both dimensions matter.
+
+```text
+                ┌──────────────────┐
+                │   Coding Task    │
+                └────────┬─────────┘
+                         │
+              ┌──────────┴──────────┐
+              ↓                     ↓
+       Development              SRE / Ops
+       ───────────              ─────────
+       Write code               Monitor health
+       Run tests                Monitor resources
+       Debug                    Monitor time
+       Verify                   Monitor APIs/tools
+              │                     │
+              └──────────┬──────────┘
+                         ↓
+                 Continue safely
+```
+
+### 8.7. The Core Principle
+
+The agent should behave as both a **developer and an operator of its own execution environment**.
+
+Do not wait until the container, Cline session, process, or API access has already failed before paying attention to operational health.
+
+> **A technically correct implementation is useless if the agent or its execution environment dies before the task is completed.**
+
+The objective is therefore:
+
+```text
+Code
+  ↕
+Observe
+  ↕
+Measure
+  ↕
+Detect anomalies
+  ↕
+Stabilize when necessary
+  ↕
+Continue coding
+```
+
+**Keep the system healthy enough to finish the work.**

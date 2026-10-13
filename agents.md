@@ -2,7 +2,7 @@ This is the general guideline to help you understand about the context and envir
 
 I am talking with you through Cline in VS code
 
-Updated at: 2026-10-08 03:46 UTC
+Updated at: 2026-10-08 18:04 UTC
 
 Please run terminal command to check the time
 
@@ -96,6 +96,9 @@ Here is the current structure of the project: Just to look at structure only. De
 │   ├── investigate_report_mismatch_and_modify_chart_mission.md
 │   ├── investigate_report_mismatch_and_modify_chart_note.md  # Fig. 6.1 mismatch task note
 │   ├── paper_audit.md  # forensic audit of the paper's claims (external metric unreproducible)
+│   ├── presentation/   # slide outline + visual spec for the paper walk-through
+│   ├── query_data_bug.md        # mission: Fig. 6.2 "all ablations = Full Fusion"
+│   ├── query_data_bug_note.md   # task note: root cause (degenerate cluster->label rule) + fixes
 │   ├── merge_notebook_template.md
 │   ├── recommended_huge_notebook_structure.md
 │   └── data            # GitHub-Release payload (raw archives + merged LLM jsonl + mappings + .npy)
