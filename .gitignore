@@ -24,9 +24,6 @@
 # File PDF
 *.pdf
 
-# Toàn bộ file Markdown
-*.md
-
 # Toàn bộ file TXT, ngoại trừ requirements.txt
 *.txt
 !requirements.txt
