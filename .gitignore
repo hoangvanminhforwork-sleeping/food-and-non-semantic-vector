@@ -1,22 +1,64 @@
-# Bỏ qua toàn bộ thư mục có tên data (ở bất kỳ vị trí nào)
+```gitignore
+# ==========================================
+# 1. Bỏ qua toàn bộ thư mục tên data
+# Ở bất kỳ cấp nào trong project
+# ==========================================
 **/data/
+
+# ==========================================
+# 2. Bỏ qua các loại file
+# ==========================================
+
+# Database DuckDB
 *.duckdb
 
-# Bỏ qua toàn bộ file .txt (ngoại trừ requirements.txt)
-*.txt
-!requirements.txt
-*.pdf
-
-# Bỏ qua các thư mục cụ thể (và toàn bộ nội dung bên trong)
-Figure assets/
-LLM_Batch_Processing/
-trivial/
-Reference/
-.kilo/
+# File WAL
 *.wal
+
+# File NumPy
 *.npy
 
+# File log
+*.log
+
+# File PDF
+*.pdf
+
+# Toàn bộ file Markdown
+*.md
+
+# Toàn bộ file TXT, ngoại trừ requirements.txt
+*.txt
+!requirements.txt
+
+# ==========================================
+# 3. Bỏ qua notebook cụ thể ở mọi cấp
+# ==========================================
+ICOCO_notebook.ipynb
+
+# ==========================================
+# 4. Bỏ qua các thư mục theo tên
+# Ở bất kỳ cấp nào trong project
+# ==========================================
+
+# Thư mục từ yêu cầu mới
+system_inspection/
+trivial/
+.venv/
+_work_refine/
+ICOCO_video/
+
+# Thư mục từ gitignore cũ
+Figure assets/
+LLM_Batch_Processing/
+Reference/
+.kilo/
 old_code/
 .cline/
 .ResPain/
 .ResearchPain/
+
+# ==========================================
+# 5. Các quy tắc bổ sung từ gitignore cũ
+# ==========================================
+```
